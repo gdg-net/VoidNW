@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VXDP7XC98T"></script>
-<script src="/assets/js/ads.js"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXDP7XC98T"></script>
+  <script src="/assets/js/ads.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-VXDP7XC98T');
-</script>
+    gtag('config', 'G-VXDP7XC98T');
+  </script>
+
+  <!-- Styles for particles background -->
+  <style>
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Ensures particles are behind other content */
+      pointer-events: none; /* Allows clicking through particles */
+    }
+  </style>
+</head>
+<body>
+  <!-- Particles container -->
+  <div id="particles-js"></div>
+
+  <!-- Scripts -->
+  <script src="/assets/js/particles.js"></script>
+  <script>
+    particlesJS.load('particles-js', '/assets/json/particles.json');
+  </script>
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -54,7 +77,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
     registerSW();   
     </script>
-    <title>Games</title>
+    <title>New Tab</title>
     <style>
     
 	.flex-container {
@@ -161,7 +184,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             //default apps
             localStorage.setItem("apps", JSON.stringify([{
                 title: "Netf<x>l</x>ix",
-                imgSrc: "https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png",
+                imgSrc: "/appimg/netflix.png",
                 link: __uv$config.prefix + __uv$config.encodeUrl("https://netflix.com")
             },
             {
@@ -183,7 +206,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 title: "Di<x>s</x>cord", 
                 imgSrc: "/appimg/discord.webp",
                 link: __uv$config.prefix + __uv$config.encodeUrl("https://discord.com/")
-            }
+            },
+	    {
+                title: "Tu</x>bi", 
+                imgSrc: "https://m.media-amazon.com/images/I/715irEQPXzL.png",
+                link: __uv$config.prefix + __uv$config.encodeUrl("https://tubitv.com/")
+            },
+	    {
+                title: "Co</x>ol Ma</x>th Ga</x>me</x>s", 
+                imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwROf_FVSh9WkFeG15X-kVysnKddaMHvxSEA&s",
+                link: __uv$config.prefix + __uv$config.encodeUrl("https://www.coolmathgames.com")
+            },
+	    {
+                title: "Snap Chat", 
+                imgSrc: "/appimg/snapchat.jpg",
+                link: __uv$config.prefix + __uv$config.encodeUrl("https://www.snapchat.com")
+            },
+	    {
+                title: "Youtube", 
+                imgSrc: "/appimg/youtube.jpg",
+                link: __uv$config.prefix + __uv$config.encodeUrl("https://www.youtube.com")
+            },
+	    {
+                title: "Tiktok", 
+                imgSrc: "/appimg/tiktok.jpg",
+                link: __uv$config.prefix + __uv$config.encodeUrl("https://www.tiktok.com")
+            },
+	    {
+                title: "Spotify", 
+                imgSrc: "/appimg/spotify.jpeg",
+                link: __uv$config.prefix + __uv$config.encodeUrl("https://open.spotify.com")
+            },
+	    {
+                title: "Xbox Cloud Gaming", 
+                imgSrc: "/appimg/xboxcloud.png",
+                link: __uv$config.prefix + __uv$config.encodeUrl("https://www.xbox.com/en-us/play")
+            },
+	    {
+                title: "Instagram", 
+                imgSrc: "/appimg/instalogo.png",
+                link: __uv$config.prefix + __uv$config.encodeUrl("https://www.instagram.com/")
+            },
         ]))
          let gamesData = JSON.parse(localStorage.getItem("apps"))
 

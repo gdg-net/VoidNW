@@ -6,9 +6,10 @@ const htmlConfig = {
     searchPath: "/ta",
     settingsPath: "/settings",
     appsPath: "/app",
-    termPath: "/terminal.html"
+    termPath: "/terminal.html",
+    reqPath: "/rga"
 }
 
 const siteConfig = {
-    version: "v3.3.4"
+    version: "v3.4.0"
 }
