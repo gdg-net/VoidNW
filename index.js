@@ -26,8 +26,14 @@ app.get("/app", function (req, res) {
 app.get("/credits", function (req, res) {
   res.sendFile(path.join(__dirname, "static/credits.html"));
 })
+app.get("/voidurls", function (req, res) {
+  res.sendFile(path.join(__dirname, "static/voidurls.html"));
+})
 app.get("/settings", function (req, res) {
   res.sendFile(path.join(__dirname, "static/settings.html"));
+})
+app.get("/chat", function (req, res) {
+  res.sendFile(path.join(__dirname, "static/chat.html"));
 })
 app.use(express.static(path.join(__dirname, "static")));
 
@@ -35,4 +41,4 @@ app.get('*', function(req, res) {res.sendFile(path.join(__dirname, "static/404.h
 
 server.on("request", (req, res) => {
 if (bare.shouldRoute(req)) {bare.routeRequest(req, res)} else {app(req, res)}})
-server.listen({port: PORT}, () => {})
+server.listen({port: PORT}, () => {console.log("listening on port " + PORT)})

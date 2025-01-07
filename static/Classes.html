@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Removed popup ad script and references -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes</title>
+    
+    <!-- Keep Google-related preconnect/dns-prefetch -->
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    
+    <script>
+        // Early Performance Optimization
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        });
+
+        const preloadResources = [
+            '/nav/home.png',
+            '/nav/search.png',
+            '/nav/apps.png',
+            '/nav/fullscreenbutton.png',
+            '/nav/reload.png',
+            '/nav/flash.png',
+            '/nav/chat_icon.png'
+        ];
+
+        // Preload critical navigation images
+        preloadResources.forEach(resource => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'image';
+            link.href = resource;
+            document.head.appendChild(link);
+        });
+
+        // Enhanced Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            const swAllowedHostnames = ['localhost', '127.0.0.1'];
+            
+            const swPath = new URL('/uv/sw.js', window.location.origin).href;
+            const swScope = new URL('/', window.location.origin).href;
+
+            if (location.protocol === 'https:' || swAllowedHostnames.includes(location.hostname)) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register(swPath, { scope: swScope })
+                        .then(reg => {
+                            console.log('Service Worker registered successfully');
+                            
+                            // Immediate activation and control
+                            if (reg.active) {
+                                reg.active.postMessage({ type: 'SKIP_WAITING' });
+                            }
+                        })
+                        .catch(error => console.error('SW registration failed:', error));
+                });
+            }
+        }
+
+        // Optimized Game Loading Function
+        function initGame() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameUrl = urlParams.get('game');
+            
+            if (!gameUrl) {
+                window.location.href = '/';
+                return;
+            }
+
+            // Use requestAnimationFrame for smoother loading
+            requestAnimationFrame(() => loadGameUrl(gameUrl));
+        }
+
+        function loadGameUrl(gameUrl) {
+            const iframe = document.getElementById('gframe');
+            if (iframe) {
+                // Performance and Error Handling Improvements
+                iframe.style.opacity = '0';  // Initially hide
+                iframe.style.transition = 'opacity 0.3s ease-in';
+
+                // Timeout to prevent indefinite loading
+                const loadTimeout = setTimeout(() => {
+                    console.error('Game loading timeout');
+                    iframe.style.opacity = '1';
+                    iframe.src = 'about:blank';
+                    alert('Game loading took too long. Please refresh or try another game.');
+                }, 15000);  // 15 seconds timeout
+
+                iframe.onload = () => {
+                    clearTimeout(loadTimeout);
+                    iframe.style.opacity = '1';
+                    console.log('Game loaded successfully');
+                };
+
+                iframe.onerror = () => {
+                    clearTimeout(loadTimeout);
+                    console.error('Game loading failed');
+                    iframe.style.opacity = '1';
+                    alert('Failed to load game. Please try a different game.');
+                };
+
+                // Decode and set source with additional error handling
+                try {
+                    const decodedUrl = decodeURIComponent(gameUrl);
+                    iframe.src = decodedUrl;
+                } catch (error) {
+                    console.error('URL decoding error:', error);
+                    alert('Invalid game URL. Please try again.');
+                }
+            }
+        }
+
+        // Removed ad popup scheduling and related functions
+        // (No changes to Google scripts)
+        
+        // Trigger game loading after minimal delay
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                initGame();
+                // Removed popup checks
+            }, 50);
+        });
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-family: system-ui, sans-serif;
+            position: relative;
+        }
+
+        .header {
+            position: fixed;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            left: 0;
+            padding: 1rem;
+            top: 0;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header a {
+            margin: 0 1.5rem;
+        }
+
+        .home_bttn {
+            height: 3vh;
+            width: 3vh;
+        }
+
+        /* Removed .ad_container styles */
+
+        .game_container {
+            background: #000;
+            width: 80%;
+            max-width: 1000px;
+            height: 70vh;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            z-index: 2;
+        }
+
+        .game_iframe {
+            width: 100%;
+            height: calc(100% - 36px);
+            border: none;
+            border-radius: 10px 10px 0 0;
+            background-color: #000;
+            transition: opacity 0.3s ease-in;
+        }
+
+        .footer {
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 0 0 10px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer button {
+            width: 36px;
+            height: 36px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .footer button img {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="/"><img src="/nav/home.png" class="home_bttn" alt="Home"></a>
+        <a href="/ta"><img src="/nav/search.png" class="home_bttn" alt="Search"></a>
+        <a href="/app"><img src="/nav/apps.png" class="home_bttn" alt="Apps"></a>
+    </header>
+
+    <!-- Removed ad containers -->
+
+    <div class="game_container">
+        <iframe class="game_iframe" id="gframe" allow="fullscreen; autoplay; keyboard"></iframe>
+        <div class="footer">
+            <button onclick="toggleFullScreen()">
+                <img src="/nav/fullscreenbutton.png" alt="Fullscreen">
+            </button>
+            <button onclick="reloadGame()">
+                <img src="/nav/reload.png" alt="Reload">
+            </button>
+            <button onclick="toggleFlashlight()">
+                <img src="/nav/flash.png" alt="Flashlight">
+            </button>
+            <button onclick="toggleChat()">
+                <img src="/nav/chat_icon.png" alt="Chat">
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function reloadGame() {
+            const iframe = document.getElementById('gframe');
+            const currentSrc = iframe.src;
+            
+            iframe.style.opacity = '0';
+            iframe.src = 'about:blank';
+            setTimeout(() => {
+                iframe.src = currentSrc;
+                iframe.style.opacity = '1';
+            }, 100);
+        }
+
+        function toggleFullScreen() {
+            const iframe = document.getElementById('gframe');
+            try {
+                if (!document.fullscreenElement) {
+                    if (iframe.requestFullscreen) {
+                        iframe.requestFullscreen();
+                    } else if (iframe.webkitRequestFullscreen) { /* Safari */
+                        iframe.webkitRequestFullscreen();
+                    } else if (iframe.msRequestFullscreen) { /* IE11 */
+                        iframe.msRequestFullscreen();
+                    }
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) { /* Safari */
+                        document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) { /* IE11 */
+                        document.msExitFullscreen();
+                    }
+                }
+            } catch (err) {
+                console.error('Fullscreen error:', err);
+            }
+        }
+
+        function toggleFlashlight() {}
+        function toggleChat() {}
+    </script>
+
+    <!-- Non-critical scripts loaded at the end -->
+    <script src="/assets/js/favicon-handler.js" defer></script>
+</body>
+</html>
