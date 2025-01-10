@@ -134,6 +134,11 @@ const games2Data = [
     imgSrc: "https://lh7-us.googleusercontent.com/YyUUZFVuXnOCbOxrH9HcMVm12qQd5I1vdw66Bx4Rpiq894Dn8AhQhdQbsKtO7NKs6LZ-R0NmU__tOxKAeC-S_ECuli0_HHesKMlv4CwEx-NLukuRkj5Q2_gVR8VwQsgyQd32kSZfwx_Ia14mhV87hyQ8rZ71qA",
     link: __uv$config.prefix + __uv$config.encodeUrl("https://files.twoplayergames.org/files/games/other/Basket_Random/index.html")
 },
+{
+    title: "Hook", 
+    imgSrc: "https://lh7-us.googleusercontent.com/KZ4Q7Oi3Y1nmHVl4C5RRutadqJuboLJqSrxuENpUxyOo7wjp_rA_42diemPg9qyCmABkxrDePmi6-n38K_I-YXxSHrRc_BUeB7Jf-e9tWORf0bhOAWW5vz_2nqlUE7qz2X_pbSRM11g_C0xS3hsaQjRMYcVstA",
+    link: __uv$config.prefix + __uv$config.encodeUrl("https://media.abcya.com/games/hook/html/index.html")
+},
 
 
    ];
