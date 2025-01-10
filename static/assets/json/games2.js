@@ -139,6 +139,11 @@ const games2Data = [
     imgSrc: "https://lh7-us.googleusercontent.com/KZ4Q7Oi3Y1nmHVl4C5RRutadqJuboLJqSrxuENpUxyOo7wjp_rA_42diemPg9qyCmABkxrDePmi6-n38K_I-YXxSHrRc_BUeB7Jf-e9tWORf0bhOAWW5vz_2nqlUE7qz2X_pbSRM11g_C0xS3hsaQjRMYcVstA",
     link: __uv$config.prefix + __uv$config.encodeUrl("https://media.abcya.com/games/hook/html/index.html")
 },
+{
+    title: "Blue Box", 
+    imgSrc: "https://lh7-us.googleusercontent.com/yJm0N-6jwF0rI7UaSpB7A6uJbEpU2M75nXxsBFzFCuaP1ZZe33sPjWaEON8ZEQG7aSs8e9wBAU6WWJ4O4L3jWXCoQdwEcwrsb2rTGCdqnJBANHDDcNmyxSxX2VaSaeKoFSQnRre0izmJAcpVLjQx9t8XEP4gmg",
+    link: __uv$config.prefix + __uv$config.encodeUrl("https://media.abcya.com/games/blue_box/html/index.html")
+},
 
 
    ];
